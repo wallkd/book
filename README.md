@@ -1,31 +1,24 @@
-## 📖 Foundry Book
+## 📖 Foundry Docs
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-111-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-115-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-A book on all things Foundry. [Read now](https://book.getfoundry.sh).
+Documentation on all things Foundry. [Read now](https://getfoundry.sh).
 
 ### Contributing
 
 Check our [contributing guidelines](./CONTRIBUTING.md). Feel free to contribute wording, sentences, chapters, and guides!
 
-The book is build with [mdbook](https://github.com/rust-lang/mdBook), which you can get by running `cargo install mdbook`.
-
-The book also requires [`mdbook-external-links`](https://github.com/jonahgoldwastaken/mdbook-external-links): `cargo install mdbook-external-links`.
+The book is built with [vocs](https://vocs.dev). Install dependencies with `bun install`.
 
 To see the book change live run:
 
 ```sh
-mdbook serve
+bun dev
 ```
 
-To run the book with docker, run:
-
-```sh
-docker run -p 3000:3000 -v `pwd`:/book peaceiris/mdbook serve
-```
-
-To add a new section (file) to the book, add it to [`SUMMARY.md`](src/SUMMARY.md).
+To add a new section (file) to the book, add it to [`sidebar.ts`](./sidebar/sidebar.ts).
 
 For a more structured overview of the current issues, see [the GitHub project](https://github.com/orgs/foundry-rs/projects/1).
 
@@ -180,6 +173,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/totomanov"><img src="https://avatars.githubusercontent.com/u/63903313?v=4?s=100" width="100px;" alt="Anton Totomanov"/><br /><sub><b>Anton Totomanov</b></sub></a><br /><a href="https://github.com/foundry-rs/book/commits?author=totomanov" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/DhairyaSethi"><img src="https://avatars.githubusercontent.com/u/55102840?v=4?s=100" width="100px;" alt="Dhairya Sethi"/><br /><sub><b>Dhairya Sethi</b></sub></a><br /><a href="https://github.com/foundry-rs/book/commits?author=DhairyaSethi" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Braqzen"><img src="https://avatars.githubusercontent.com/u/103777923?v=4?s=100" width="100px;" alt="Braqzen"/><br /><sub><b>Braqzen</b></sub></a><br /><a href="https://github.com/foundry-rs/book/commits?author=Braqzen" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rolandolopez36"><img src="https://avatars.githubusercontent.com/u/140282898?v=4?s=100" width="100px;" alt="rolandolopez36"/><br /><sub><b>rolandolopez36</b></sub></a><br /><a href="https://github.com/foundry-rs/book/commits?author=rolandolopez36" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://juanmgutierrez.com"><img src="https://avatars.githubusercontent.com/u/7672379?v=4?s=100" width="100px;" alt="Juan Gutierrez"/><br /><sub><b>Juan Gutierrez</b></sub></a><br /><a href="https://github.com/foundry-rs/book/commits?author=juannyG" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TomasCImach"><img src="https://avatars.githubusercontent.com/u/43709975?v=4?s=100" width="100px;" alt="Tomas C Imach"/><br /><sub><b>Tomas C Imach</b></sub></a><br /><a href="https://github.com/foundry-rs/book/commits?author=TomasCImach" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://signor.vercel.app/"><img src="https://avatars.githubusercontent.com/u/94352660?v=4?s=100" width="100px;" alt="Signor Dev"/><br /><sub><b>Signor Dev</b></sub></a><br /><a href="#maintenance-Signor1" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>

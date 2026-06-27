@@ -1017,6 +1017,42 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "rolandolopez36",
+      "name": "rolandolopez36",
+      "avatar_url": "https://avatars.githubusercontent.com/u/140282898?v=4",
+      "profile": "https://github.com/rolandolopez36",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "juannyG",
+      "name": "Juan Gutierrez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7672379?v=4",
+      "profile": "http://juanmgutierrez.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "TomasCImach",
+      "name": "Tomas C Imach",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43709975?v=4",
+      "profile": "https://github.com/TomasCImach",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Signor1",
+      "name": "Signor Dev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/94352660?v=4",
+      "profile": "https://signor.vercel.app/",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
