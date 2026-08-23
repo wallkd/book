@@ -17,9 +17,13 @@ Arguments:
 
 Options:
   -n, --network <NETWORK>
-          Specify the Network for correct encoding
+          Override the network used to decode the transaction.
           
-          [possible values: ethereum, tempo]
+          By default, cast decodes with Foundry's transaction envelope, which
+          recognizes standard Ethereum txs and Foundry-supported
+          network-specific tx types such as Tempo.
+          
+          [possible values: ethereum, optimism, tempo, monad]
 
   -h, --help
           Print help (see a summary with '-h')
@@ -28,7 +32,10 @@ Options:
           Number of threads to use. Specifying 0 defaults to the number of
           logical cores
           
-          [aliases: --jobs]
+          [alias: --jobs]
+
+      --profile <PROFILE>
+          The configuration profile to use
 
 Display options:
       --color <COLOR>
@@ -41,14 +48,6 @@ Display options:
 
       --json
           Format log messages as JSON
-
-      --machine
-          Activate the agent contract: disables color and wraps CLI-runtime
-          exits (parse / usage / help / version) in a structured envelope.
-          Per-command machine output (declared `output_mode`, progress and
-          prompt suppression, canonical exit codes) is adopted incrementally —
-          see `docs/agents/spec.md` §10. Mutually exclusive with `--json` and
-          `--md` to keep machine-mode output unambiguous
 
       --md
           Format log messages as Markdown
@@ -71,6 +70,14 @@ Display options:
           - 5 (-vvvvv): Print execution and setup traces for all tests,
           including storage changes and
             backtraces with line numbers.
+
+Compiler options:
+      --allow-local-compiler
+          Allow use of local compiler executables without prompting
+
+Project options:
+      --allow-project-env
+          Allow loading project dotenv files without prompting
 ```
 
 :::

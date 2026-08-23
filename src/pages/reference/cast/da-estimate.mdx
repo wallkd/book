@@ -23,14 +23,16 @@ Options:
           Number of threads to use. Specifying 0 defaults to the number of
           logical cores
           
-          [aliases: --jobs]
+          [alias: --jobs]
+
+      --profile <PROFILE>
+          The configuration profile to use
 
 Rpc options:
-  -r, --rpc-url <RPC_URL>
+  -r, --rpc-url <URL>
           The RPC endpoint
           
-          [env: ETH_RPC_URL=]
-          [aliases: --fork-url]
+          [alias: --fork-url]
 
   -k, --insecure
           Allow insecure RPC connections (accept invalid HTTPS certificates).
@@ -71,7 +73,7 @@ Rpc options:
           See also
           [https://docs.alchemy.com/reference/compute-units#what-are-cups-compute-units-per-second](https://docs.alchemy.com/reference/compute-units#what-are-cups-compute-units-per-second)
           
-          [aliases: --no-rate-limit]
+          [alias: --no-rate-limit]
 
       --flashbots
           Use the Flashbots RPC URL with fast mode
@@ -85,7 +87,7 @@ Rpc options:
       --jwt-secret <JWT_SECRET>
           JWT Secret for the RPC endpoint.
           
-          The JWT secret will be used to create a JWT for a RPC. For example,
+          The JWT secret will be used to create a JWT for an RPC. For example,
           the following can be used to simulate a CL `engine_forkchoiceUpdated`
           call:
           
@@ -107,7 +109,7 @@ Rpc options:
   -n, --network <NETWORK>
           Specify the Network for correct encoding
           
-          [possible values: ethereum, optimism, tempo]
+          [possible values: ethereum, optimism, tempo, monad]
 
 Display options:
       --color <COLOR>
@@ -142,6 +144,14 @@ Display options:
           - 5 (-vvvvv): Print execution and setup traces for all tests,
           including storage changes and
             backtraces with line numbers.
+
+Compiler options:
+      --allow-local-compiler
+          Allow use of local compiler executables without prompting
+
+Project options:
+      --allow-project-env
+          Allow loading project dotenv files without prompting
 ```
 
 :::
