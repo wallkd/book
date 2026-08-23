@@ -39,7 +39,7 @@ Options:
   -n, --network <NETWORK>
           Specify the network for correct encoding
           
-          [possible values: ethereum, tempo]
+          [possible values: ethereum, optimism, tempo, monad]
 
   -e, --etherscan-api-key <KEY>
           The Etherscan (or equivalent) API key
@@ -69,7 +69,10 @@ Options:
           Number of threads to use. Specifying 0 defaults to the number of
           logical cores
           
-          [aliases: --jobs]
+          [alias: --jobs]
+
+      --profile <PROFILE>
+          The configuration profile to use
 
 Verifier options:
       --verifier <VERIFIER>
@@ -93,6 +96,10 @@ Verifier options:
           
           [env: VERIFIER_URL=]
 
+Linker options:
+      --libraries <LIBRARIES>
+          Set pre-linked libraries
+
 Display options:
       --color <COLOR>
           The color of the log messages
@@ -104,14 +111,6 @@ Display options:
 
       --json
           Format log messages as JSON
-
-      --machine
-          Activate the agent contract: disables color and wraps CLI-runtime
-          exits (parse / usage / help / version) in a structured envelope.
-          Per-command machine output (declared `output_mode`, progress and
-          prompt suppression, canonical exit codes) is adopted incrementally —
-          see `docs/agents/spec.md` §10. Mutually exclusive with `--json` and
-          `--md` to keep machine-mode output unambiguous
 
       --md
           Format log messages as Markdown
@@ -134,6 +133,14 @@ Display options:
           - 5 (-vvvvv): Print execution and setup traces for all tests,
           including storage changes and
             backtraces with line numbers.
+
+Compiler options:
+      --allow-local-compiler
+          Allow use of local compiler executables without prompting
+
+Project options:
+      --allow-project-env
+          Allow loading project dotenv files without prompting
 ```
 
 :::

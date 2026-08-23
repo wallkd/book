@@ -2,6 +2,11 @@
 
 Runs a published transaction in a local environment and prints the trace
 
+Examples:
+- cast run $TX_HASH
+- cast run $TX_HASH --quick (only use the state from the previous block)
+- cast run $TX_HASH --debug (open the transaction in the debugger)
+
 :::terminal
 
 ```bash
@@ -19,12 +24,6 @@ Options:
   -d, --debug
           Opens the transaction in the debugger
 
-      --decode-internal
-          Whether to identify internal functions in traces
-
-      --trace-depth <TRACE_DEPTH>
-          Defines the depth of a trace
-
   -t, --trace-printer
           Print out opcode traces
 
@@ -36,9 +35,6 @@ Options:
       --replay-system-txes
           Whether to replay system transactions
 
-      --disable-labels
-          Disables the labels in the traces
-
       --prestate-tracer
           Use debug_traceTransaction to fetch the prestate instead of replaying
           the block.
@@ -48,10 +44,19 @@ Options:
           (most public RPCs don't). If the call or response can't be used, cast
           silently falls back to replaying the block.
 
-  -l, --label <LABEL>
-          Label addresses in the trace.
+      --debug-trace-transaction
+          Fetch the transaction's trace from the node via
+          `debug_traceTransaction` (callTracer) and render it, instead of
+          re-executing the transaction locally.
           
-          Example: 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045:vitalik.eth
+          This skips the block replay entirely, so it is fast and reflects
+          exactly what happened on-chain, including chain-specific EVM behavior
+          a local replay may not reproduce, but it requires the node to expose
+          the `debug_` namespace. The result is a call-tree view: nested calls,
+          value, gas, emitted logs and revert data. It does not provide the
+          opcode-level detail of a local run, so the local-execution-only flags
+          (`--debug`, `--decode-internal`, `--trace-printer`, `--quick`,
+          `--prestate-tracer`, `--evm-version`) do not apply.
 
   -e, --etherscan-api-key <KEY>
           The Etherscan (or equivalent) API key
@@ -70,13 +75,46 @@ Options:
           Number of threads to use. Specifying 0 defaults to the number of
           logical cores
           
-          [aliases: --jobs]
+          [alias: --jobs]
+
+      --profile <PROFILE>
+          The configuration profile to use
+
+Trace options:
+      --decode-internal
+          Identify internal functions in traces.
+          
+          This will trace internal functions and decode stack parameters.
+          
+          Parameters stored in memory (such as bytes or arrays) are currently
+          decoded only when a single function is matched, similarly to
+          `--debug`, for performance reasons.
+
+      --trace-depth <DEPTH>
+          Maximum depth of rendered traces
+
+      --disable-labels
+          Disable labels in traces
+
+      --compact-labels
+          Hide addresses in trace parameters when a label is available
+
+      --labels <ADDRESS:LABEL>
+          Label addresses in traces.
+          
+          Example: 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045:vitalik.eth
+          
+          [alias: --label]
+
+      --disable-external-identification
+          Disable external trace identification using Sourcify, Etherscan, or
+          OpenChain
 
 Rpc options:
   -r, --rpc-url <URL>
           The RPC endpoint
           
-          [aliases: --fork-url]
+          [alias: --fork-url]
 
   -k, --insecure
           Allow insecure RPC connections (accept invalid HTTPS certificates).
@@ -117,7 +155,7 @@ Rpc options:
           See also
           [https://docs.alchemy.com/reference/compute-units#what-are-cups-compute-units-per-second](https://docs.alchemy.com/reference/compute-units#what-are-cups-compute-units-per-second)
           
-          [aliases: --no-rate-limit]
+          [alias: --no-rate-limit]
 
       --flashbots
           Use the Flashbots RPC URL with fast mode
@@ -131,7 +169,7 @@ Rpc options:
       --jwt-secret <JWT_SECRET>
           JWT Secret for the RPC endpoint.
           
-          The JWT secret will be used to create a JWT for a RPC. For example,
+          The JWT secret will be used to create a JWT for an RPC. For example,
           the following can be used to simulate a CL `engine_forkchoiceUpdated`
           call:
           
@@ -158,7 +196,7 @@ Rpc options:
       --with-local-artifacts
           Use current project artifacts for trace decoding
           
-          [aliases: --la]
+          [alias: --la]
 
       --disable-block-gas-limit
           Disable block gas limit check
@@ -177,14 +215,6 @@ Display options:
 
       --json
           Format log messages as JSON
-
-      --machine
-          Activate the agent contract: disables color and wraps CLI-runtime
-          exits (parse / usage / help / version) in a structured envelope.
-          Per-command machine output (declared `output_mode`, progress and
-          prompt suppression, canonical exit codes) is adopted incrementally —
-          see `docs/agents/spec.md` §10. Mutually exclusive with `--json` and
-          `--md` to keep machine-mode output unambiguous
 
       --md
           Format log messages as Markdown
@@ -207,6 +237,14 @@ Display options:
           - 5 (-vvvvv): Print execution and setup traces for all tests,
           including storage changes and
             backtraces with line numbers.
+
+Compiler options:
+      --allow-local-compiler
+          Allow use of local compiler executables without prompting
+
+Project options:
+      --allow-project-env
+          Allow loading project dotenv files without prompting
 ```
 
 :::
